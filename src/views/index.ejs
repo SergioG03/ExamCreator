@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Página principal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Página principal</h1>
+    
+    <!-- Botón de About -->
+    <a class="about-link" href="/about">About</a>
+
+    <h2>Lista de exámenes</h2>
+
+    <% if (exams.length === 0) { %>
+      <p>No hay exámenes disponibles.</p>
+    <% } else { %>
+      <ul class="exam-list">
+        <% exams.forEach((exam) => { %>
+          <li>
+            <span class="exam-id">Examen <%= exam.id %></span>
+            <a class="download-link" href="/exam/<%= exam.id %>/pdf" download>Descargar PDF</a>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+
+    <h2>Crear nuevo examen</h2>
+
+    <form class="create-form" action="/create" method="post">
+      <label for="numQuestions">Número de preguntas:</label>
+      <input type="number" name="numQuestions" id="numQuestions" required>
+
+      <button class="create-button" type="submit">Crear</button>
+    </form>
+  </div>
+</body>
+</html>

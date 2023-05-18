@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Examen <%= exam.id %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Examen <%= exam.id %></h1>
+  
+    <!-- Botón de Home -->
+    <a href="/">Home</a>
+    
+    <h2>Lista de ejercicios</h2>
+    <% if (exam.questions.length === 0) { %>
+      <p>No hay ejercicios en este examen.</p>
+    <% } else { %>
+      <ul>
+        <% exam.questions.forEach((question) => { %>
+          <li>
+            <strong>Puntaje:</strong> <%= question.score %><br>
+            <strong>Descripción:</strong> <%= question.description %>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Crear examen</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Crear examen</h1>
+
+    <!-- Botón de Home -->
+    <a href="/">Home</a>
+
+    <form action="/generate" method="post">
+      <ul>
+        <% for (let i = 1; i <= numQuestions; i++) { %>
+          <li>
+            <label for="score<%= i %>">Pregunta <%= i %> - Puntuación:</label>
+            <input type="number" id="score<%= i %>" name="score<%= i %>" min="1" required>
+            <label for="description<%= i %>">Descripción:</label>
+            <textarea id="description<%= i %>" name="description<%= i %>" rows="3" required></textarea>
+          </li>
+        <% } %>
+      </ul>
+      <button type="submit">Generar examen</button>
+    </form>
+  </div>
+</body>
+</html>
